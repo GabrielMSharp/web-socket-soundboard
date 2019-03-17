@@ -1,0 +1,19 @@
+<p style="padding: 16px;" *ngIf="ableToShake">Shake to Clap</p>
+<div class="soundboard">
+
+  <div
+    class="sound {{sound.key}}"
+    *ngFor="let sound of soundboardSounds"
+    [ngClass]="{'disabled': !sound.enabled, 'animate': sound.active}"
+    (click)="trigger(sound)">
+
+    <div class="ring"></div>
+
+    <div class="inner">
+      <div class="icon">{{sound.icon}}</div>
+      <div class="name">{{sound.name}}</div>
+    </div>
+
+  </div>
+
+</div>
