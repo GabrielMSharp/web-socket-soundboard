@@ -12,16 +12,6 @@ export class ClientComponent implements OnInit {
 
   soundboardSounds = [
     {
-      key: 'clap',
-      icon: '👏',
-      name: 'Single Clap',
-      count: 6,
-      timestamp: new Date().getTime(),
-      msLimit: 50,
-      enabled: true,
-      active: false
-    },
-    {
       key: 'yas',
       icon: '💅',
       name: 'Sass',
@@ -144,7 +134,7 @@ export class ClientComponent implements OnInit {
 
       this.ableToShake = true;
       // Shake sensitivity (a lower number is more)
-      const sensitivity = 35;
+      const sensitivity = 20;
 
       // Position variables
       let x1 = 0;
@@ -167,7 +157,15 @@ export class ClientComponent implements OnInit {
           const change = Math.abs(x1 - x2 + y1 - y2 + z1 - z2);
 
           if (change > sensitivity) {
-            this.trigger(this.clapSound);
+            this.trigger({
+              key: 'clap',
+              icon: '👏',
+              name: 'Single Clap',
+              count: 10,
+              timestamp: new Date().getTime(),
+              msLimit: 0,
+              enabled: true
+            });
           }
 
           // Update new position
